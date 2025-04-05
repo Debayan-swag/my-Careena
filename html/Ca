@@ -1,38 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAREENA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Ca.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(to bottom left, #10dede 0%, #ffffff 100%);
+            background-size: 300% 300%;
+            animation: color 12s ease-in-out infinite;
+
+        }
+
+        @keyframes color {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        .navber {
+            height: 72px;
+            display: flex;
+            justify-content: end;
+            align-items: end;
+
+        }
+
+        .inner-nav {
+            height: 60px;
+            display: flex;
+            width: 15%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 1rem;
+            border-radius: 2rem;
+            border: none;
+            font-size: 1rem;
+        }
+
+        #log-in-btn {
+            color: #747474;
+            transition: all 2s linear 0;
+            border-top-right-radius: 0;
+        }
+
+        #log-in-btn:active {
+            background-color: #dbf8f7;
+        }
+
+        #log-in-btn:hover {
+            cursor: pointer;
+        }
+
+        ul li {
+
+            color: #444444;
+            transition: all 2s linear 0;
+            border-top-right-radius: 0;
+            list-style: none;
+        }
+
+        ul li:active {
+
+            color: #b5b2b2;
+        }
+
+        ul li:hover {
+
+            cursor: pointer;
+        }
+
+        .chatBot-img {
+            height: 200px;
+            width: 200px;
+            background-image: url(chatbotphoto.avif);
+            background-size: cover;
+            border-radius: 50%;
+
+
+        }
+
+        main {
+            /*height: 100%;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .welcome-heading {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            font-size: 2rem;
+            animation: 1.5s;
+        }
+
+        #welcome {
+            color: #747474;
+        }
+
+        #CAREENA {
+            color: #05445E;
+            font-weight: bold;
+            font-size: 45px;
+
+        }
+
+        .welcome-para {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: 2s;
+
+        }
+
+        .btn-div {
+            margin-top: 10rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #chat-btn {
+            padding: 1rem;
+            width: 15%;
+            border-radius: 2rem;
+            border: none;
+            font-size: 1rem;
+            /*background-color: #189AB4;*/
+            background: linear-gradient(to bottom, #006666 0%, #33cccc 100%);
+            color: white;
+            transition: all 2s linear 0;
+            animation: 2.5s;
+
+        }
+
+        #chat-btn:active {
+            background: linear-gradient(to bottom, #009999 0%, #33cccc 100%);
+
+        }
+
+        #chat-btn:hover {
+            cursor: pointer;
+        }
+
+        .anim {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: moveup 1s linear forwards;
+        }
+
+        @keyframes moveup {
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <div class="navber">
                 <div class="inner-nav">
                     <button class="nav-btn" id="log-in-btn">Login</button>
-                <!--<button class="nav-btn" id="sign-up-btn">Sign up</button>-->
-                <ul><li>Sign up</li></ul>
-                <!--<button class="nav-btn" id="log-out-btn">Logout</button>
+                    <!--<button class="nav-btn" id="sign-up-btn">Sign up</button>-->
+                    <ul>
+                        <li>Sign up</li>
+                    </ul>
+                    <!--<button class="nav-btn" id="log-out-btn">Logout</button>
                 <button class="nav-btn" id="stay-log-out">Stay logout</button>-->
                 </div>
-                </div>
+            </div>
         </header>
-        <main><div class="chatBot-img anim"></div>
+        <main>
+            <div class="chatBot-img anim"></div>
         </main>
         <div class="welcome-heading anim">
-            <p id="welcome" >Welcome to</p>
-            <p id="CAREENA" >CAREENA</p>
+            <p id="welcome">Welcome to</p>
+            <p id="CAREENA">CAREENA</p>
         </div>
         <div class="welcome-para anim">
             <p>Power Symptom Checker AI: Revolutionizing Healthcare</p>
         </div>
         <div class="btn-div anim">
-            <button id="chat-btn"> <i class="fa-solid fa-wand-magic-sparkles"></i>      Let's Explore</button>
+            <button id="chat-btn"> <i class="fa-solid fa-wand-magic-sparkles"></i> Let's Explore</button>
         </div>
     </div>
-    <script src="ca.js"></script>
-    </body>
+    <script>
+        // Navigation buttons
+        document.getElementById("log-in-btn")?.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+
+        document.querySelector("ul li")?.addEventListener("click", () => {
+            window.location.href = "signUP.html";
+        });
+
+        document.getElementById("chat-btn")?.addEventListener("click", () => {
+            window.location.href = "Ca2.html";
+        });
+
+        document.querySelector(".forgot-password")?.addEventListener("click", () => {
+            window.location.href = "forgotPass.html";
+        });
+
+        document.querySelector(".login-link")?.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+
+        // Signup Functionality
+        document.querySelector(".signup-container form")?.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let fullname = document.getElementById("fullname").value;
+            let email = document.getElementById("email").value;
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+            if (users[username]) {
+                alert("Username already exists! Try logging in.");
+            } else {
+                users[username] = { fullname, email, password };
+                localStorage.setItem("users", JSON.stringify(users));
+                alert("Signup successful! Redirecting to login.");
+                window.location.href = "login.html";
+            }
+        });
+
+        // Login Functionality
+        document.querySelector(".login-container form")?.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+            if (users[username] && users[username].password === password) {
+                alert("Login successful! Redirecting to chatbot.");
+                localStorage.setItem("loggedInUser", username);
+                window.location.href = "Ca2.html";
+            } else {
+                alert("Invalid credentials! Redirecting to login error page.");
+                window.location.href = "loginError.html";
+            }
+        });
+
+        // Forgot Password Functionality
+        document.querySelector(".container form")?.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let email = document.getElementById("email").value;
+            let otp = Math.floor(100000 + Math.random() * 900000);
+            localStorage.setItem("otp", otp);
+            alert(`An OTP has been sent to ${email}: ${otp} (Simulated for now)`);
+            window.location.href = "otp.html";
+        });
+
+        // OTP Verification Functionality
+        document.querySelector(".otp-container form")?.addEventListener("submit", (event) => {
+            event.preventDefault();
+            let enteredOtp = document.getElementById("otp").value;
+            let storedOtp = localStorage.getItem("otp");
+
+            if (enteredOtp === storedOtp) {
+                alert("OTP Verified! Redirecting to chatbot.");
+                localStorage.removeItem("otp");
+                window.location.href = "Ca2.html";
+            } else {
+                alert("Invalid OTP! Please try again.");
+            }
+        });
+
+        // Chatbot Functionality
+        function sendMessage() {
+            let userMessage = document.getElementById("input").value;
+
+            fetch("http://127.0.0.1:5500/chat", {
+                method: "POST",
+                body: JSON.stringify({ message: userMessage }),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    let chatbox = document.querySelector(".ans-div");
+                    chatbox.innerHTML += `<p><b>You:</b> ${userMessage}</p>`;
+                    chatbox.innerHTML += `<p><b>Bot:</b> ${data.reply}</p>`;
+                    document.getElementById("input").value = "";
+                });
+        }
+
+        // Trigger sendMessage on Enter Key press
+        document.getElementById("input")?.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+        // Voice Recognition (Microphone)
+        document.getElementById("microphone-btn")?.addEventListener("click", () => {
+            let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = "en-US";
+            recognition.start();
+
+            recognition.onresult = (event) => {
+                let voiceInput = event.results[0][0].transcript;
+                document.getElementById("input").value = voiceInput;
+                sendMessage();
+            };
+
+            recognition.onerror = () => {
+                alert("Voice recognition error. Please try again.");
+            };
+        });
+
+    </script>
+</body>
+
 </html>
