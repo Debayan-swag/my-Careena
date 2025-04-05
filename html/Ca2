@@ -1,37 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAREENA(CHAT)</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="Ca2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #A0E7E5;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(to bottom left, #1eb0ba 0%, #c0eaed 100%);
+            background-size: 300% 300%;
+            animation: color 12s ease-in-out infinite;
+        }
+
+        @keyframes color {
+            0% {
+                background-position: 0 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        .navbar {
+            /* Corrected class name */
+            height: 40px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            padding-right: 2rem;
+        }
+
+        #CAREENA {
+            color: #05445E;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        main {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .main-box {
+            height: 70vh;
+            width: 60vh;
+            background-color: white;
+            border-radius: 2rem;
+            text-align: center;
+        }
+
+        .question-box {
+            height: 20%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .chatBot-img {
+            height: 70px;
+            width: 70px;
+            background-image: url(chatbotphoto.avif);
+            background-size: cover;
+            border-radius: 50%;
+            margin-left: 1px;
+        }
+
+        #input {
+            width: 50%;
+            height: 4rem;
+            border: none;
+            outline: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            padding-left: 0.5rem;
+            color: #0e3737;
+            background: linear-gradient(to bottom, #7beded 0%, #a9ebf3 100%);
+            border: 1px solid #0d6a6a;
+        }
+
+        .img-container-div {
+            width: 90%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            height: 6%;
+            width: 50%;
+        }
+
+        #img-btn {
+            padding: 1rem;
+            border-radius: 2rem;
+            border: none;
+            background-color: white;
+            font-size: 1.2rem;
+            list-style: none;
+        }
+
+        #img-btn:active {
+            color: rgb(59, 59, 59);
+        }
+
+        #microphone-btn {
+            padding: 1rem;
+            border-radius: 2rem;
+            border: none;
+            font-size: 1rem;
+            background-color: #1489b0;
+            color: white;
+        }
+
+        #microphone-btn:active {
+            background-color: #54c5ea;
+        }
+
+        .ans-div {
+            width: 70%;
+            height: 100%;
+            margin-top: 5rem;
+            color: #082531;
+            font-size: 1rem;
+        }
+
+        h2 {
+            color: #0e3737;
+            margin-top: 10rem;
+        }
+
+        h2 i {
+            color: rgb(94, 91, 91);
+        }
+
+        .anim {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: moveup 2.5s linear infinite forwards;
+        }
+
+        @keyframes moveup {
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <div class="navber">
-                
+
                 <p id="CAREENA">CAREENA</p>
-                </div>
+            </div>
         </header>
         <main>
-            
-           <!---- <div class="main-box">-->
-            <h2 class="anim">Health Revolutionizing AI <i class="fa-solid fa-robot"></i></h2>
+
+            <!---- <div class="main-box">-->
+            <h2 class="anim">Healing,accelerated by AI <i class="fa-solid fa-robot"></i></h2>
             <div class="question-box">
                 <div class="chatBot-img"></div>
-                 <input type="text"  placeholder=" Type a message " id="input" >
+                <input type="text" placeholder=" How can I help you?" id="input">
             </div>
-                
-                 <div class="img-container-div">
-                    <button id="microphone-btn"> <i class="fa-solid fa-microphone"></i></button>
-                    </div>
-                    <div class="ans-div"></div>
-            
-                
+
+            <div class="img-container-div">
+                <!--<button id="img-btn"><i class="fa-regular fa-image"></i></button>-->
+                <ul>
+                    <li id="img-btn"><i class="fa-regular fa-image"></i></li>
+                </ul>
+                <button id="microphone-btn"> <i class="fa-solid fa-microphone"></i></button>
+            </div>
+            <div class="ans-div"></div>
+
+
         </main>
     </div>
-    <script src="ca.js"></script>
+    <script>
+        const chatbox = document.querySelector(".ans-div");
+        const inputField = document.getElementById("input");
+
+        // Send User Message
+        function sendMessage() {
+            const userMessage = inputField.value.trim();
+            if (!userMessage) return;
+
+            appendMessage("You", userMessage, "user");
+            inputField.value = "";
+
+            showTypingEffect();
+
+            fetch("http://127.0.0.1:5500/chat", {
+                method: "POST",
+                body: JSON.stringify({ message: userMessage }),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const botReply = formatBotReply(data.reply);
+                    removeTypingEffect();
+                    typeBotMessage("Careena", botReply, "bot");
+                })
+                .catch(() => {
+                    removeTypingEffect();
+                    appendMessage("Careena", "Oops! Something went wrong. Please try again.", "bot");
+                });
+        }
+
+        // Append message to chat
+        function appendMessage(sender, message, senderType) {
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add(senderType === "user" ? "user-msg" : "bot-msg");
+            msgDiv.innerHTML = `<b>${sender}:</b> <span>${message}</span>`;
+            chatbox.appendChild(msgDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        // Format Bot reply - clean unwanted characters
+        function formatBotReply(reply) {
+            return reply.replace(/\*\*/g, '')  // Remove **
+                .replace(/\*/g, '')    // Remove single *
+                .replace(/\\n/g, '<br>'); // Add line breaks
+        }
+
+        // Typing indicator
+        function showTypingEffect() {
+            const typingDiv = document.createElement("div");
+            typingDiv.classList.add("typing");
+            typingDiv.innerHTML = `<b>Careena is typing...</b>`;
+            chatbox.appendChild(typingDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function removeTypingEffect() {
+            const typingDiv = document.querySelector(".typing");
+            if (typingDiv) typingDiv.remove();
+        }
+
+        // Type Bot Message like real typing
+        function typeBotMessage(sender, message, senderType) {
+            const msgDiv = document.createElement("div");
+            msgDiv.classList.add(senderType === "user" ? "user-msg" : "bot-msg");
+            msgDiv.innerHTML = `<b>${sender}:</b> <span></span>`;
+            chatbox.appendChild(msgDiv);
+
+            let i = 0;
+            const span = msgDiv.querySelector("span");
+
+            const typingSpeed = 15; // faster typing speed
+
+            function typeChar() {
+                if (i < message.length) {
+                    span.innerHTML += message.charAt(i);
+                    i++;
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                    setTimeout(typeChar, typingSpeed);
+                }
+            }
+
+            typeChar();
+        }
+
+        // Enter Key Send
+        inputField.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") sendMessage();
+        });
+
+        // Send Button Click
+        document.getElementById("send-btn")?.addEventListener("click", sendMessage);
+    </script>
+
 </body>
+
 </html>
