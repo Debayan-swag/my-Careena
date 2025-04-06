@@ -1,242 +1,375 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAREENA(CHAT)</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             box-sizing: border-box;
         }
 
         body {
             background-color: #A0E7E5;
+            min-height: 100vh;
         }
 
         .container {
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
-            background: linear-gradient(to bottom left, #1eb0ba 0%, #c0eaed 100%);
-            background-size: 300% 300%;
-            animation: color 12s ease-in-out infinite;
-        }
-
-        @keyframes color {
-            0% {
-                background-position: 0 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0 50%;
-            }
+            background: linear-gradient(to bottom, #1eb0ba 0%, rgba(192, 234, 237, 0.8) 70%, rgba(192, 234, 237, 0.4) 100%);
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar {
-            /* Corrected class name */
-            height: 40px;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            padding-right: 2rem;
+            padding: 1.2rem 2.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         #CAREENA {
             color: #05445E;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         main {
-            height: 100%;
-            width: 100%;
+            flex: 1;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-        }
-
-        .main-box {
-            height: 70vh;
-            width: 60vh;
-            background-color: white;
-            border-radius: 2rem;
-            text-align: center;
-        }
-
-        .question-box {
-            height: 20%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 2rem;
             gap: 2rem;
-            margin-top: 5rem;
-        }
-
-        .chatBot-img {
-            height: 70px;
-            width: 70px;
-            background-image: url(chatbotphoto.avif);
-            background-size: cover;
-            border-radius: 50%;
-            margin-left: 1px;
-        }
-
-        #input {
-            width: 50%;
-            height: 4rem;
-            border: none;
-            outline: none;
-            border-radius: 0.75rem;
-            font-size: 1rem;
-            padding-left: 0.5rem;
-            color: #0e3737;
-            background: linear-gradient(to bottom, #7beded 0%, #a9ebf3 100%);
-            border: 1px solid #0d6a6a;
-        }
-
-        .img-container-div {
-            width: 90%;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            font-size: 1.25rem;
-            height: 6%;
-            width: 50%;
-        }
-
-        #img-btn {
-            padding: 1rem;
-            border-radius: 2rem;
-            border: none;
-            background-color: white;
-            font-size: 1.2rem;
-            list-style: none;
-        }
-
-        #img-btn:active {
-            color: rgb(59, 59, 59);
-        }
-
-        #microphone-btn {
-            padding: 1rem;
-            border-radius: 2rem;
-            border: none;
-            font-size: 1rem;
-            background-color: #1489b0;
-            color: white;
-        }
-
-        #microphone-btn:active {
-            background-color: #54c5ea;
-        }
-
-        .ans-div {
-            width: 70%;
-            height: 100%;
-            margin-top: 5rem;
-            color: #082531;
-            font-size: 1rem;
         }
 
         h2 {
-            color: #0e3737;
-            margin-top: 10rem;
+            color: #05445E;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            font-weight: 600;
         }
 
-        h2 i {
-            color: rgb(94, 91, 91);
+        .disease-suggestions {
+            display: none;
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem auto;
+            width: 85%;
+            max-width: 900px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
         }
 
-        .anim {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: moveup 2.5s linear infinite forwards;
+        .disease-suggestions h3 {
+            color: #05445E;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
         }
 
-        @keyframes moveup {
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .disease-suggestions.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .disease-card {
+            background: #f0f9ff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .disease-card:hover {
+            transform: translateY(-3px);
+            background: #e3f2fd;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.97);
+            padding: 1.5rem;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            box-shadow: 0 -4px 25px rgba(0,0,0,0.08);
+        }
+
+        .chat-interface {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chatBot-img {
+            height: 50px;
+            width: 50px;
+            background-image: url(chatbotphoto.avif);
+            background-size: cover;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        #input {
+            flex: 1;
+            padding: 1.2rem;
+            border: 2px solid #1eb0ba;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        #input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(30,176,186,0.2);
+            border-color: #0d9ba4;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .action-btn {
+            padding: 1rem;
+            border-radius: 50%;
+            border: none;
+            background: #1eb0ba;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            background: #1a9ba4;
+            box-shadow: 0 4px 12px rgba(26,155,164,0.2);
+        }
+
+        .action-btn.clear-btn {
+            background: #ff6b6b;
+        }
+
+        .action-btn.clear-btn:hover {
+            background: #ff5252;
+        }
+
+        .action-btn i {
+            font-size: 1.2rem;
+        }
+
+
+        .mood-text {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .ans-div {
+            display: none;
+            margin: 1rem auto;
+            width: 85%;
+            max-width: 900px;
+            background: rgba(255,255,255,0.97);
+            border-radius: 20px;
+            padding: 1.8rem;
+            height: 450px;
+            overflow-y: auto;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+        }
+
+        .ans-div.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .user-msg, .bot-msg {
+            margin: 1.2rem 0;
+            padding: 1.2rem;
+            border-radius: 15px;
+            max-width: 85%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .user-msg {
+            background: #e3f2fd;
+            margin-left: auto;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-msg {
+            background: #f5f5f5;
+            margin-right: auto;
+            border-bottom-left-radius: 5px;
+        }
+
+        .bot-msg .message-content {
+            margin-top: 0.5rem;
+        }
+
+        .bot-msg .message-content h1,
+        .bot-msg .message-content h2,
+        .bot-msg .message-content h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .bot-msg .message-content li {
+            margin: 0.3rem 0;
+            list-style-type: disc;
+        }
+
+
+        .typing {
+            color: #666;
+            font-style: italic;
+            padding: 0.8rem;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1eb0ba;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1a9ba4;
         }
     </style>
 </head>
-
 <body>
     <div class="container">
-        <header>
-            <div class="navber">
-
-                <p id="CAREENA">CAREENA</p>
-            </div>
+        <header class="navbar">
+            <p id="CAREENA">CAREENA</p>
         </header>
         <main>
-
-            <!---- <div class="main-box">-->
-            <h2 class="anim">Healing,accelerated by AI <i class="fa-solid fa-robot"></i></h2>
-            <div class="question-box">
-                <div class="chatBot-img"></div>
-                <input type="text" placeholder=" How can I help you?" id="input">
+            <h2><i class="fa-solid fa-robot"></i> Healing, accelerated by AI</h2>
+            
+            <div class="disease-suggestions">
+                <h3>Common Health Concerns</h3>
+                <div class="disease-grid">
+                    <div class="disease-card">Common Cold & Flu</div>
+                    <div class="disease-card">Allergies</div>
+                    <div class="disease-card">Headache</div>
+                    <div class="disease-card">Digestive Issues</div>
+                    <div class="disease-card">Skin Conditions</div>
+                    <div class="disease-card">Anxiety & Stress</div>
+                </div>
             </div>
 
-            <div class="img-container-div">
-                <!--<button id="img-btn"><i class="fa-regular fa-image"></i></button>-->
-                <ul>
-                    <li id="img-btn"><i class="fa-regular fa-image"></i></li>
-                </ul>
-                <button id="microphone-btn"> <i class="fa-solid fa-microphone"></i></button>
-            </div>
             <div class="ans-div"></div>
-
-
         </main>
+
+        <div class="chat-container">
+            <div class="chat-interface">
+                <div class="chatBot-img"></div>
+                <input type="text" placeholder="How can I help you with your health concerns?" id="input">
+                <div class="action-buttons">
+                    <button class="action-btn" id="microphone-btn" title="Voice Input">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <button class="action-btn" id="send-btn" title="Send Message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <button class="action-btn clear-btn" id="clear-btn" title="Clear Chat">
+                        <i class="fa-solid fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <script>
         const chatbox = document.querySelector(".ans-div");
         const inputField = document.getElementById("input");
+        const diseaseSuggestions = document.querySelector(".disease-suggestions");
+        const sendButton = document.getElementById("send-btn");
+        const clearButton = document.getElementById("clear-btn");
+        let isTyping = false;
 
-        // Send User Message
-        function sendMessage() {
+        // Show suggestions initially
+        diseaseSuggestions.classList.add("show");
+
+        // Handle disease card clicks
+        document.querySelectorAll(".disease-card").forEach(card => {
+            card.addEventListener("click", () => {
+                inputField.value = `Tell me about ${card.textContent}`;
+                sendMessage();
+            });
+        });
+
+        async function sendMessage() {
             const userMessage = inputField.value.trim();
             if (!userMessage) return;
+
+            // Hide suggestions and show chat
+            diseaseSuggestions.classList.remove("show");
+            chatbox.classList.add("show");
 
             appendMessage("You", userMessage, "user");
             inputField.value = "";
 
             showTypingEffect();
 
-            fetch("http://127.0.0.1:5500/chat", {
-                method: "POST",
-                body: JSON.stringify({ message: userMessage }),
-                headers: { "Content-Type": "application/json" }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const botReply = formatBotReply(data.reply);
-                    removeTypingEffect();
-                    typeBotMessage("Careena", botReply, "bot");
-                })
-                .catch(() => {
-                    removeTypingEffect();
-                    appendMessage("Careena", "Oops! Something went wrong. Please try again.", "bot");
+            try {
+                const response = await fetch("http://127.0.0.1:5500/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message: userMessage })
                 });
+
+                const data = await response.json();
+                removeTypingEffect();
+                typeBotMessage("Careena", data.reply, "bot");
+            } catch (error) {
+                removeTypingEffect();
+                typeBotMessage("Careena", "Sorry, I'm having trouble connecting to the server. Please try again later.", "bot");
+            }
         }
 
-        // Append message to chat
+
         function appendMessage(sender, message, senderType) {
             const msgDiv = document.createElement("div");
             msgDiv.classList.add(senderType === "user" ? "user-msg" : "bot-msg");
@@ -245,14 +378,6 @@
             chatbox.scrollTop = chatbox.scrollHeight;
         }
 
-        // Format Bot reply - clean unwanted characters
-        function formatBotReply(reply) {
-            return reply.replace(/\*\*/g, '')  // Remove **
-                .replace(/\*/g, '')    // Remove single *
-                .replace(/\\n/g, '<br>'); // Add line breaks
-        }
-
-        // Typing indicator
         function showTypingEffect() {
             const typingDiv = document.createElement("div");
             typingDiv.classList.add("typing");
@@ -266,39 +391,74 @@
             if (typingDiv) typingDiv.remove();
         }
 
-        // Type Bot Message like real typing
+        function formatMessage(message) {
+            // Remove asterisks and medical disclaimers
+            message = message.replace(/\*/g, '');
+            message = message.replace(/I am an AI and cannot provide medical advice\.\s*/g, '');
+
+            // Format headings with proper spacing and styling
+            message = message.replace(/\n(#+)\s*([^\n]+)/g, (match, hashes, text) => {
+                const level = hashes.length;
+                const fontSize = 1.6 - (level - 1) * 0.2;
+                const marginTop = level === 1 ? '2em' : '1.5em';
+                const marginBottom = '1em';
+                const icon = level === 1 ? '📌' : '🔹';
+                return `\n<h${level} style="color: ${level === 1 ? '#05445E' : '#1eb0ba'}; font-size: ${fontSize}em; margin: ${marginTop} 0 ${marginBottom} 0; padding-bottom: 0.5em; border-bottom: ${level === 1 ? '2px solid #eee' : 'none'};">${icon} ${text}</h${level}>`;
+            });
+
+            // Format lists
+            message = message.replace(/^-\s+([^\n]+)/gm, '<li style="margin: 0.5rem 0 0.5rem 1.5rem; list-style: none; position: relative;"><span style="position: absolute; left: -1.5rem;">•</span> $1</li>');
+
+            // Format paragraphs
+            message = message.replace(/\n\n([^#\n][^\n]+)/g, '<p style="margin: 1em 0; line-height: 1.6;">$1</p>');
+
+            return message;
+        }
+
         function typeBotMessage(sender, message, senderType) {
             const msgDiv = document.createElement("div");
             msgDiv.classList.add(senderType === "user" ? "user-msg" : "bot-msg");
-            msgDiv.innerHTML = `<b>${sender}:</b> <span></span>`;
+            if (senderType === "bot") {
+                msgDiv.style.fontSize = "1rem";
+                msgDiv.style.lineHeight = "1.5";
+            }
+            msgDiv.innerHTML = `<b>${sender}:</b> <div class="message-content"></div>`;
             chatbox.appendChild(msgDiv);
 
+            const content = msgDiv.querySelector(".message-content");
+            const formattedMessage = formatMessage(message);
             let i = 0;
-            const span = msgDiv.querySelector("span");
-
-            const typingSpeed = 15; // faster typing speed
+            const typingSpeed = 5; // Increased typing speed (lower number = faster)
+            isTyping = true;
 
             function typeChar() {
-                if (i < message.length) {
-                    span.innerHTML += message.charAt(i);
+                if (i < formattedMessage.length && isTyping) {
+                    content.innerHTML = formattedMessage.substring(0, i + 1);
                     i++;
                     chatbox.scrollTop = chatbox.scrollHeight;
                     setTimeout(typeChar, typingSpeed);
+                } else if (!isTyping) {
+                    content.innerHTML = formattedMessage;
+                    chatbox.scrollTop = chatbox.scrollHeight;
                 }
             }
 
             typeChar();
         }
 
-        // Enter Key Send
+        // Event Listeners
         inputField.addEventListener("keypress", (e) => {
             if (e.key === "Enter") sendMessage();
         });
 
-        // Send Button Click
-        document.getElementById("send-btn")?.addEventListener("click", sendMessage);
+        sendButton.addEventListener("click", sendMessage);
+
+        clearButton.addEventListener("click", () => {
+            chatbox.innerHTML = '';
+            diseaseSuggestions.classList.add("show");
+            chatbox.classList.remove("show");
+        });
+
     </script>
-
 </body>
-
 </html>
