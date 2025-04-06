@@ -1,110 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>User Login - CAREENA</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-            font-family: sans-serif;
-            color: #4a4949;
-
+            min-height: 100vh;
+            background: linear-gradient(135deg, #A0E7E5 0%, #80CED7 100%);
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
         }
 
         .login-container {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
 
+        .login-container:hover {
+            transform: translateY(-5px);
         }
 
         .login-container h2 {
-            margin-bottom: 20px;
+            color: #2C3E50;
+            margin-bottom: 30px;
+            font-size: 2em;
         }
 
         .input-group {
-            margin-bottom: 15px;
+            margin-bottom: 25px;
             text-align: left;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            color: #34495E;
+            font-weight: 500;
+            font-size: 0.9em;
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px;
-
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
             outline: none;
+            transition: border-color 0.3s ease;
+            font-size: 1em;
+        }
+
+        .input-group input:focus {
+            border-color: #80CED7;
         }
 
         .btn {
             width: 100%;
-            padding: 10px;
-            background: linear-gradient(to bottom, #006666 0%, #33cccc 100%);
+            padding: 14px;
+            background: linear-gradient(to right, #006666, #33cccc);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 16px;
-
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .btn:hover {
-            background: #0056b3;
+            background: linear-gradient(to right, #005555, #2ba7a7);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .forgot-password {
-            display: block;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555;
+            display: inline-block;
+            margin-top: 20px;
+            color: #666;
             text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
         }
 
         .forgot-password:hover {
-            color: #010e0f;
+            color: #006666;
+            text-decoration: underline;
         }
 
-        body {
-            background-color: #A0E7E5;
-
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
-
 <body>
-
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Login Page</h2>
         <form action="#" method="POST">
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
             </div>
             <button type="submit" class="btn">Login</button>
         </form>
         <a href="#" class="forgot-password">Forgot Password?</a>
     </div>
-
-
     <script>
         // Navigation buttons
         document.getElementById("log-in-btn")?.addEventListener("click", () => {
