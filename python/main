@@ -6,17 +6,35 @@ app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests
 
 # Set your Gemini API Key
-genai.configure(api_key="gemini_api_key")
+genai.configure(api_key="AIzaSyDsv7a7iCNOruho0qWQ9nfqRGc6HdOzwp0")
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    data = request.json  # Expecting JSON data
+    data = request.json
     user_message = data.get('message', '')
 
     try:
-        model = genai.GenerativeModel("gemini-2.0-flash")  # Use Gemini Pro Model
-        response = model.generate_content(user_message)
+        model = genai.GenerativeModel("gemini-2.0-flash")
 
+        # Check if message contains question-like patterns
+        question_indicators = ['what', 'how', 'why', 'when', 'where', 'can you explain', 'tell me about']
+        is_question = any(indicator in user_message.lower() for indicator in question_indicators)
+
+        if is_question:
+            prompt = f"""Please provide a structured response with clear headings:
+
+            # Main Topic
+            Brief overview...
+
+            ## Key Details
+            - Point 1: Description
+            - Point 2: Description
+
+            Query: {user_message}"""
+        else:
+            prompt = f"""Please provide a clear and direct response to: {user_message}"""
+
+        response = model.generate_content(prompt)
         bot_reply = response.text if response else "No response from AI."
         return jsonify({"reply": bot_reply})
     
@@ -24,4 +42,4 @@ def chat():
         return jsonify({"reply": "Error: " + str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5500) 
+    app.run(debug=True, port=5500)
