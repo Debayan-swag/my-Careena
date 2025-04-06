@@ -1,234 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Forgot Password - CAREENA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1eb0ba 0%, #c0eaed 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #A0E7E5;
-            margin: 0;
+            padding: 20px;
         }
 
         .container {
-            text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            transform: translateY(20px);
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         h2 {
-            margin-bottom: 10px;
-            color: #555;
+            color: #05445E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 28px;
         }
 
         p {
-            font-size: 14px;
-            color: #555;
+            color: #666;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.6;
         }
 
         .input-group {
-            margin: 15px 0;
-            text-align: left;
+            margin-bottom: 25px;
         }
 
         label {
             display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #555;
+            margin-bottom: 8px;
+            color: #05445E;
+            font-weight: 500;
         }
 
         input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #1eb0ba;
+            box-shadow: 0 0 0 3px rgba(30, 176, 186, 0.1);
+            outline: none;
         }
 
         .btn {
-            background: linear-gradient(to bottom, #006666 0%, #33cccc 100%);
-            ;
-            color: white;
-            padding: 10px 20px;
+            width: 100%;
+            padding: 14px;
             border: none;
-            cursor: pointer;
+            border-radius: 10px;
+            background: linear-gradient(to right, #1eb0ba, #75E6DA);
+            color: white;
             font-size: 16px;
-            border-radius: 5px;
-            transition: 0.3s;
-
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .btn:hover {
-            opacity: 0.8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 176, 186, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
         }
 
         .back-to-login {
             display: block;
-            margin-top: 10px;
+            text-align: center;
+            margin-top: 20px;
+            color: #05445E;
             text-decoration: none;
-            color: #073232;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .back-to-login:hover {
-            text-decoration: underline;
+            color: #1eb0ba;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h2>Forgot Password</h2>
-        <p>Enter your email address and we'll send you a link to reset your password.</p>
+        <p>Enter your email address and we'll send you a link to reset your password</p>
         <form action="#" method="POST">
             <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
             </div>
             <button type="submit" class="btn">Send Reset Link</button>
         </form>
-        <a href="login.html" class="back-to-login">Back to Login</a>
+        <a href="login.html" class="back-to-login">← Back to Login</a>
     </div>
     <script>
-        // Navigation buttons
-        document.getElementById("log-in-btn")?.addEventListener("click", () => {
-            window.location.href = "login.html";
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const otp = Math.floor(100000 + Math.random() * 900000);
+            localStorage.setItem('otp', otp);
+            alert(`An OTP has been sent to ${email}: ${otp} (Simulated)`);
+            window.location.href = 'otp.html';
         });
-
-        document.querySelector("ul li")?.addEventListener("click", () => {
-            window.location.href = "signUP.html";
-        });
-
-        document.getElementById("chat-btn")?.addEventListener("click", () => {
-            window.location.href = "Ca2.html";
-        });
-
-        document.querySelector(".forgot-password")?.addEventListener("click", () => {
-            window.location.href = "forgotPass.html";
-        });
-
-        document.querySelector(".login-link")?.addEventListener("click", () => {
-            window.location.href = "login.html";
-        });
-
-        // Signup Functionality
-        document.querySelector(".signup-container form")?.addEventListener("submit", (event) => {
-            event.preventDefault();
-            let fullname = document.getElementById("fullname").value;
-            let email = document.getElementById("email").value;
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-            let confirmPassword = document.getElementById("confirm-password").value;
-
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-            let users = JSON.parse(localStorage.getItem("users")) || {};
-            if (users[username]) {
-                alert("Username already exists! Try logging in.");
-            } else {
-                users[username] = { fullname, email, password };
-                localStorage.setItem("users", JSON.stringify(users));
-                alert("Signup successful! Redirecting to login.");
-                window.location.href = "login.html";
-            }
-        });
-
-        // Login Functionality
-        document.querySelector(".login-container form")?.addEventListener("submit", (event) => {
-            event.preventDefault();
-            let username = document.getElementById("username").value;
-            let password = document.getElementById("password").value;
-
-            let users = JSON.parse(localStorage.getItem("users")) || {};
-            if (users[username] && users[username].password === password) {
-                alert("Login successful! Redirecting to chatbot.");
-                localStorage.setItem("loggedInUser", username);
-                window.location.href = "Ca2.html";
-            } else {
-                alert("Invalid credentials! Redirecting to login error page.");
-                window.location.href = "loginError.html";
-            }
-        });
-
-        // Forgot Password Functionality
-        document.querySelector(".container form")?.addEventListener("submit", (event) => {
-            event.preventDefault();
-            let email = document.getElementById("email").value;
-            let otp = Math.floor(100000 + Math.random() * 900000);
-            localStorage.setItem("otp", otp);
-            alert(`An OTP has been sent to ${email}: ${otp} (Simulated for now)`);
-            window.location.href = "otp.html";
-        });
-
-        // OTP Verification Functionality
-        document.querySelector(".otp-container form")?.addEventListener("submit", (event) => {
-            event.preventDefault();
-            let enteredOtp = document.getElementById("otp").value;
-            let storedOtp = localStorage.getItem("otp");
-
-            if (enteredOtp === storedOtp) {
-                alert("OTP Verified! Redirecting to chatbot.");
-                localStorage.removeItem("otp");
-                window.location.href = "Ca2.html";
-            } else {
-                alert("Invalid OTP! Please try again.");
-            }
-        });
-
-        // Chatbot Functionality
-        function sendMessage() {
-            let userMessage = document.getElementById("input").value;
-
-            fetch("http://127.0.0.1:5500/chat", {
-                method: "POST",
-                body: JSON.stringify({ message: userMessage }),
-                headers: { "Content-Type": "application/json" }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    let chatbox = document.querySelector(".ans-div");
-                    chatbox.innerHTML += `<p><b>You:</b> ${userMessage}</p>`;
-                    chatbox.innerHTML += `<p><b>Bot:</b> ${data.reply}</p>`;
-                    document.getElementById("input").value = "";
-                });
-        }
-
-        // Trigger sendMessage on Enter Key press
-        document.getElementById("input")?.addEventListener("keypress", (event) => {
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        });
-
-        // Voice Recognition (Microphone)
-        document.getElementById("microphone-btn")?.addEventListener("click", () => {
-            let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-            recognition.lang = "en-US";
-            recognition.start();
-
-            recognition.onresult = (event) => {
-                let voiceInput = event.results[0][0].transcript;
-                document.getElementById("input").value = voiceInput;
-                sendMessage();
-            };
-
-            recognition.onerror = () => {
-                alert("Voice recognition error. Please try again.");
-            };
-        });
-
     </script>
 </body>
-
 </html>
