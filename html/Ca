@@ -1,96 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAREENA</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            box-sizing: border-box;
         }
 
         .container {
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
-            background: linear-gradient(to bottom left, #10dede 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #10dede 0%, #ffffff 100%);
             background-size: 300% 300%;
-            animation: color 12s ease-in-out infinite;
-
+            animation: gradient 12s ease-in-out infinite;
+            overflow-x: hidden;
         }
 
-        @keyframes color {
-            0% {
-                background-position: 0 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0 50%;
-            }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        .navber {
-            height: 72px;
+        .navbar {
+            padding: 1rem 2rem;
             display: flex;
-            justify-content: end;
-            align-items: end;
-
+            justify-content: flex-end;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .inner-nav {
-            height: 60px;
             display: flex;
-            width: 15%;
-            justify-content: space-evenly;
+            gap: 1rem;
             align-items: center;
         }
 
         .nav-btn {
-            padding: 1rem;
-            border-radius: 2rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
             border: none;
             font-size: 1rem;
-        }
-
-        #log-in-btn {
-            color: #747474;
-            transition: all 2s linear 0;
-            border-top-right-radius: 0;
-        }
-
-        #log-in-btn:active {
-            background-color: #dbf8f7;
-        }
-
-        #log-in-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #05445E;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
             cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         ul li {
-
-            color: #444444;
-            transition: all 2s linear 0;
-            border-top-right-radius: 0;
             list-style: none;
-        }
-
-        ul li:active {
-
-            color: #b5b2b2;
+            color: #05445E;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         ul li:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
 
-            cursor: pointer;
+        .content-wrapper {
+            padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
         .chatBot-img {
@@ -99,123 +94,154 @@
             background-image: url(chatbotphoto.avif);
             background-size: cover;
             border-radius: 50%;
-
-
-        }
-
-        main {
-            /*height: 100%;*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem 0;
+            border: 5px solid rgba(255, 255, 255, 0.3);
         }
 
         .welcome-heading {
-            margin-top: 2rem;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            font-size: 2rem;
-            animation: 1.5s;
+            gap: 0.5rem;
+            margin: 2rem 0;
         }
 
         #welcome {
-            color: #747474;
+            color: #05445E;
+            font-size: 2rem;
+            font-weight: 300;
         }
 
         #CAREENA {
             color: #05445E;
             font-weight: bold;
-            font-size: 45px;
-
+            font-size: 4rem;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .welcome-para {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: 2s;
-
+            max-width: 600px;
+            margin: 1rem auto;
+            color: #05445E;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            padding: 0 1rem;
         }
 
         .btn-div {
-            margin-top: 10rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 3rem 0;
         }
 
         #chat-btn {
-            padding: 1rem;
-            width: 15%;
-            border-radius: 2rem;
+            padding: 1rem 2rem;
+            min-width: 200px;
+            border-radius: 50px;
             border: none;
-            font-size: 1rem;
-            /*background-color: #189AB4;*/
-            background: linear-gradient(to bottom, #006666 0%, #33cccc 100%);
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #006666 0%, #33cccc 100%);
             color: white;
-            transition: all 2s linear 0;
-            animation: 2.5s;
-
-        }
-
-        #chat-btn:active {
-            background: linear-gradient(to bottom, #009999 0%, #33cccc 100%);
-
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
         #chat-btn:hover {
-            cursor: pointer;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #chat-btn:active {
+            transform: translateY(-1px);
         }
 
         .anim {
             opacity: 0;
             transform: translateY(30px);
-            animation: moveup 1s linear forwards;
+            animation: moveup 1s ease-out forwards;
         }
 
         @keyframes moveup {
-            100% {
+            to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            #CAREENA {
+                font-size: 3rem;
+            }
+
+            .welcome-para {
+                font-size: 1rem;
+            }
+
+            .chatBot-img {
+                height: 150px;
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .inner-nav {
+                gap: 0.5rem;
+            }
+
+            .nav-btn, ul li {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            #welcome {
+                font-size: 1.5rem;
+            }
+
+            #CAREENA {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header>
-            <div class="navber">
+            <nav class="navbar">
                 <div class="inner-nav">
                     <button class="nav-btn" id="log-in-btn">Login</button>
-                    <!--<button class="nav-btn" id="sign-up-btn">Sign up</button>-->
                     <ul>
                         <li>Sign up</li>
                     </ul>
-                    <!--<button class="nav-btn" id="log-out-btn">Logout</button>
-                <button class="nav-btn" id="stay-log-out">Stay logout</button>-->
                 </div>
-            </div>
+            </nav>
         </header>
-        <main>
+        <div class="content-wrapper">
             <div class="chatBot-img anim"></div>
-        </main>
-        <div class="welcome-heading anim">
-            <p id="welcome">Welcome to</p>
-            <p id="CAREENA">CAREENA</p>
-        </div>
-        <div class="welcome-para anim">
-            <p>Power Symptom Checker AI: Revolutionizing Healthcare</p>
-        </div>
-        <div class="btn-div anim">
-            <button id="chat-btn"> <i class="fa-solid fa-wand-magic-sparkles"></i> Let's Explore</button>
+            <div class="welcome-heading anim">
+                <p id="welcome">Welcome to</p>
+                <p id="CAREENA">CAREENA</p>
+            </div>
+            <div class="welcome-para anim">
+                <p>Power Symptom Checker AI: Revolutionizing Healthcare</p>
+            </div>
+            <div class="btn-div anim">
+                <button id="chat-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Let's Explore
+                </button>
+            </div>
         </div>
     </div>
     <script>
-        // Navigation buttons
         document.getElementById("log-in-btn")?.addEventListener("click", () => {
             window.location.href = "login.html";
         });
@@ -227,7 +253,7 @@
         document.getElementById("chat-btn")?.addEventListener("click", () => {
             window.location.href = "Ca2.html";
         });
-
+        //This part is added from original code.
         document.querySelector(".forgot-password")?.addEventListener("click", () => {
             window.location.href = "forgotPass.html";
         });
@@ -236,7 +262,7 @@
             window.location.href = "login.html";
         });
 
-        // Signup Functionality
+
         document.querySelector(".signup-container form")?.addEventListener("submit", (event) => {
             event.preventDefault();
             let fullname = document.getElementById("fullname").value;
@@ -261,7 +287,7 @@
             }
         });
 
-        // Login Functionality
+
         document.querySelector(".login-container form")?.addEventListener("submit", (event) => {
             event.preventDefault();
             let username = document.getElementById("username").value;
@@ -278,7 +304,7 @@
             }
         });
 
-        // Forgot Password Functionality
+
         document.querySelector(".container form")?.addEventListener("submit", (event) => {
             event.preventDefault();
             let email = document.getElementById("email").value;
@@ -288,7 +314,7 @@
             window.location.href = "otp.html";
         });
 
-        // OTP Verification Functionality
+
         document.querySelector(".otp-container form")?.addEventListener("submit", (event) => {
             event.preventDefault();
             let enteredOtp = document.getElementById("otp").value;
@@ -303,7 +329,6 @@
             }
         });
 
-        // Chatbot Functionality
         function sendMessage() {
             let userMessage = document.getElementById("input").value;
 
@@ -321,14 +346,14 @@
                 });
         }
 
-        // Trigger sendMessage on Enter Key press
+
         document.getElementById("input")?.addEventListener("keypress", (event) => {
             if (event.key === "Enter") {
                 sendMessage();
             }
         });
 
-        // Voice Recognition (Microphone)
+
         document.getElementById("microphone-btn")?.addEventListener("click", () => {
             let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
             recognition.lang = "en-US";
@@ -347,5 +372,4 @@
 
     </script>
 </body>
-
 </html>
