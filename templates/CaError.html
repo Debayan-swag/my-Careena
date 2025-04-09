@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAREENA - Error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/CaError.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="inner-nav">
+                </div>
+            </nav>
+        </header>
+        <div class="content-wrapper">
+            <div class="chatBot-img anim"></div>
+            <div class="welcome-heading anim">
+                <p id="welcome">Access Denied</p>
+                <p id="CAREENA">CAREENA</p>
+            </div>
+            <div class="welcome-para anim">
+                <p class="error-message">
+                    <span class="emoji">🔐</span> 
+                    Please Login if you have an account or Sign Up to create one to explore CAREENA
+                    <span class="emoji">✨</span>
+                </p>
+            </div>
+            <div class="btn-div anim">
+                <button class="error-btn" onclick="location.href='login.html'">Login</button>
+                <button class="error-btn" onclick="location.href='signUP.html'">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/CaError.js') }}"></script>
+</body>
+
+</html>

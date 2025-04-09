@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAREENA(CHAT)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Ca2.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="navbar" style="display: flex; justify-content: space-between; align-items: center;">
+            <p id="CAREENA">CAREENA</p>
+            <button id="logout-btn" class="action-btn" style="background: #ff6b6b; margin-left: auto;">
+                <i class="fa-solid fa-sign-out-alt"></i>
+            </button>
+        </header>
+        <main>
+            <h2><i class="fa-solid fa-robot"></i> Healing, accelerated by AI</h2>
+
+            <div class="disease-suggestions">
+                <h3>Quick Concerns Access</h3>
+                <div class="disease-grid">
+                    <div class="disease-card">🤒 Common Cold & Flu</div>
+                    <div class="disease-card">🤧 Allergies</div>
+                    <div class="disease-card">🤕 Headache</div>
+                    <div class="disease-card">🤢 Digestive Issues</div>
+                    <div class="disease-card">🧴 Skin Conditions</div>
+                    <div class="disease-card">😰 Anxiety & Stress</div>
+                </div>
+            </div>
+
+            <div class="emergency-notice">
+                <span>Emergency? Call (112).</span> Remember this bot will only provide relevent information, always take presription from a doctor
+            </div>
+
+            <div class="ans-div"></div>
+        </main>
+
+        <div class="chat-container">
+            <div class="chat-interface">
+                <div class="chatBot-img"></div>
+                <input type="text" placeholder="How can I help you with your health concerns?" id="input">
+                <div class="action-buttons">
+                    <button class="action-btn" id="microphone-btn" title="Voice Input">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <button class="action-btn" id="send-btn" title="Send Message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <button class="action-btn stop-btn" id="stop-btn" title="Stop Generation" style="display: none; background: #ff9800;">
+                        <i class="fa-solid fa-stop"></i>
+                    </button>
+                    <button class="action-btn clear-btn" id="clear-btn" title="Clear Chat">
+                        <i class="fa-solid fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/Ca2.js') }}"></script>
+</body>
+</html>

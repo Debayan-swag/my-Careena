@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Error - CAREENA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginError.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Login Failed</h1>
+        <p>Sorry, the credentials you entered don't match our records. Please try again or create a new account.</p>
+        <div class="button-group">
+            <button id="login-btn">Try Again</button>
+            <button id="signup-btn">Create Account</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/loginError.js') }}"></script>
+</body>
+</html>

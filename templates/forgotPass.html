@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password - CAREENA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forgotPass.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Forgot Password</h2>
+        <p>Enter your email address and we'll send you a link to reset your password</p>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <button type="submit" class="btn">Send Reset Link</button>
+        </form>
+        <a href="login.html" class="back-to-login">← Back to Login</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/forgotPass.js') }}"></script>
+</body>
+</html>

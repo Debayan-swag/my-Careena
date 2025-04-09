@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CAREENA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/signUP.css') }}">
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Create Account</h2>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Choose a username">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Create a password">
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <a href="#" class="login-link">Already have an account? Login</a>
+    </div>
+    <script src="{{ url_for('static', filename='js/signUP.js') }}"></script>
+</body>
+</html>

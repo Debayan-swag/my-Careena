@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAREENA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Ca.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar">
+                <div class="inner-nav">
+                    </div>
+                <div class="user-profile" id="user-profile"> </div>
+            </nav>
+        </header>
+        <div class="content-wrapper">
+            <div class="chatBot-img anim"></div>
+            <div class="welcome-heading anim">
+                <p id="welcome">Welcome to</p>
+                <p id="CAREENA">CAREENA</p>
+            </div>
+            <div class="welcome-para anim">
+                <p>Power Symptom Checker AI: Revolutionizing Healthcare 🌟</p>
+                <div class="typing-effect">Your AI Health Assistant 🤖 | Available 24/7 ⏰ | Instant Support 💫</div>
+            </div>
+            <div class="btn-div anim">
+                <button id="chat-btn">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Let's Explore
+                </button>
+            </div>
+        </div>
+        <div class="logout-dialog">
+            <p>Are you sure you want to logout?</p>
+            <button class="yes-btn">Yes</button>
+            <button class="no-btn">No</button>
+        </div>
+        <div class="screen-break"></div>
+    </div>
+    <script src="{{ url_for('static', filename='js/Ca.js') }}"></script>
+</body>
+
+</html>
