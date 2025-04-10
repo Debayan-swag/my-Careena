@@ -76,7 +76,7 @@
     // Chatbot Functionality
     function sendMessage() {
         let userMessage = document.getElementById("input").value;
-        fetch("http://127.0.0.1:5501/chat", {
+        fetch('https://my-careena.onrender.com/chat', {
             method: "POST",
             body: JSON.stringify({ message: userMessage }),
             headers: { "Content-Type": "application/json" }
