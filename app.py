@@ -80,6 +80,11 @@ def home():
     return render_template('Ca.html')
 
 
+@app.route('/Ca.html')
+def home_page():
+    return render_template('Ca.html')
+
+
 @app.route('/Ca2.html')
 def chat_bot():
     return render_template('Ca2.html')
