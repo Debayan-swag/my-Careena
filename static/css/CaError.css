@@ -92,7 +92,7 @@ ul li:hover {
 .chatBot-img {
     height: 225px;
     width: 225px;
-    background-image: url(chatbotphoto.png);
+    background-image: url('../images/chatbotphoto.png');
     background-size: cover;
     background-position: center;
     border-radius: 70%;
