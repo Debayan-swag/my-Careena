@@ -80,42 +80,42 @@ def home():
     return render_template('Ca.html')
 
 
-@app.route('/Ca.html')
-def home_page():
+@app.route('/dashboard')
+def dashboard():
     return render_template('Ca.html')
 
 
-@app.route('/Ca2.html')
+@app.route('/chat-bot')
 def chat_bot():
     return render_template('Ca2.html')
 
 
-@app.route('/CaError.html')
+@app.route('/chatbot-error')
 def error_page():
     return render_template('CaError.html')
 
 
-@app.route('/forgotPass.html')
+@app.route('/fog-pass')
 def forgot_pass():
     return render_template('forgotPass.html')
 
 
-@app.route('/login.html')
+@app.route('/login')
 def login_page():
     return render_template('login.html')
 
 
-@app.route('/loginError.html')
+@app.route('/loginerror')
 def login_error():
     return render_template('loginError.html')
 
 
-@app.route('/otp.html')
+@app.route('/onetime')
 def otp_page():
     return render_template('otp.html')
 
 
-@app.route('/signUP.html')
+@app.route('/signup')
 def signup_page():
     return render_template('signUP.html')
 

@@ -1,7 +1,7 @@
         // Add logout functionality
         document.getElementById("logout-btn").addEventListener("click", () => {
             localStorage.removeItem("loggedInUser");
-            window.location.href = "Ca.html";
+            window.location.href = "/dashboard";
         });
 
         const chatbox = document.querySelector(".ans-div");

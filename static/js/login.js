@@ -1,18 +1,18 @@
     // Navigation buttons
     document.getElementById("log-in-btn")?.addEventListener("click", () => {
-        window.location.href = "login.html";
+        window.location.href = "/login";
     });
     document.querySelector("ul li")?.addEventListener("click", () => {
-        window.location.href = "signUP.html";
+        window.location.href = "/signup";
     });
     document.getElementById("chat-btn")?.addEventListener("click", () => {
-        window.location.href = "Ca2.html";
+        window.location.href = "/chat-bot";
     });
     document.querySelector(".forgot-password")?.addEventListener("click", () => {
-        window.location.href = "forgotPass.html";
+        window.location.href = "/fog-pass";
     });
     document.querySelector(".login-link")?.addEventListener("click", () => {
-        window.location.href = "login.html";
+        window.location.href = "/login";
     });
     // Signup Functionality
     document.querySelector(".signup-container form")?.addEventListener("submit", (event) => {
@@ -33,22 +33,22 @@
             users[username] = { fullname, email, password };
             localStorage.setItem("users", JSON.stringify(users));
             alert("Signup successful! Redirecting to login.");
-            window.location.href = "login.html";
+            window.location.href = "/login";
         }
     });
     // Login Functionality
-    document.querySelector(".login-container form")?.addEventListener("submit", (event) => {
-        event.preventDefault();
-        let username = document.getElementById("username").value;
-        let password = document.getElementById("password").value;
-        let users = JSON.parse(localStorage.getItem("users")) || {};
-        if (users[username] && users[username].password === password) {
-            alert("Login successful! Redirecting to chatbot.");
-            localStorage.setItem("loggedInUser", username);
-            window.location.href = "Ca2.html";
-        } else {
-            alert("Invalid credentials! Redirecting to login error page.");
-            window.location.href = "loginError.html";
+ document.querySelector(".login-container form")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let users = JSON.parse(localStorage.getItem("users")) || {};
+    if (users[username] && users[username].password === password) {
+        alert("Login successful! Redirecting to chatbot.");
+        localStorage.setItem("loggedInUser", username);
+            window.location.href = "/chat-bot";
+    } else {
+        alert("Invalid credentials! Redirecting to login error page.");
+            window.location.href = "/loginerror";
         }
     });
     // Forgot Password Functionality
@@ -58,7 +58,7 @@
         let otp = Math.floor(100000 + Math.random() * 900000);
         localStorage.setItem("otp", otp);
         alert(`An OTP has been sent to ${email}: ${otp} (Simulated for now)`);
-        window.location.href = "otp.html";
+        window.location.href = "/onetime";
     });
     // OTP Verification Functionality
     document.querySelector(".otp-container form")?.addEventListener("submit", (event) => {
@@ -68,7 +68,7 @@
         if (enteredOtp === storedOtp) {
             alert("OTP Verified! Redirecting to chatbot.");
             localStorage.removeItem("otp");
-            window.location.href = "Ca2.html";
+            window.location.href = "/chat-bot";
         } else {
             alert("Invalid OTP! Please try again.");
         }
@@ -108,4 +108,4 @@
         recognition.onerror = () => {
             alert("Voice recognition error. Please try again.");
         };
-    });
+});

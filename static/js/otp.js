@@ -10,7 +10,7 @@ form.addEventListener('submit', (e) => {
     if (enteredOtp === storedOtp) {
         alert('OTP Verified! Redirecting...');
         localStorage.removeItem('otp');
-        window.location.href = 'Ca2.html';
+        window.location.href = '/chat-bot';
     } else {
         alert('Invalid OTP! Please try again.');
         input.value = '';

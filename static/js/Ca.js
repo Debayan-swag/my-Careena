@@ -1,26 +1,26 @@
 document.getElementById("log-in-btn")?.addEventListener("click", () => {
-    window.location.href = "login.html";
+    window.location.href = "/login";
 });
 
 document.querySelector("ul li")?.addEventListener("click", () => {
-    window.location.href = "signUP.html";
+    window.location.href = "/signup";
 });
 
 document.getElementById("chat-btn")?.addEventListener("click", () => {
 if (localStorage.getItem("loggedInUser")) {
-window.location.href = "Ca2.html";
+window.location.href = "/chat-bot";
 } else {
-window.location.href = "CaError.html";
+window.location.href = "/chatbot-error";
 }
 });
 
 //This part is added from original code.
 document.querySelector(".forgot-password")?.addEventListener("click", () => {
-    window.location.href = "forgotPass.html";
+    window.location.href = "/fog-pass";
 });
 
 document.querySelector(".login-link")?.addEventListener("click", () => {
-    window.location.href = "login.html";
+    window.location.href = "/login";
 });
 
 
@@ -44,7 +44,7 @@ document.querySelector(".signup-container form")?.addEventListener("submit", (ev
         users[username] = { fullname, email, password };
         localStorage.setItem("users", JSON.stringify(users));
         alert("Signup successful! Redirecting to login.");
-        window.location.href = "login.html";
+        window.location.href = "/login";
     }
 });
 
@@ -58,11 +58,11 @@ document.querySelector(".login-container form")?.addEventListener("submit", (eve
     if (users[username] && users[username].password === password) {
         alert("Login successful! Redirecting to chatbot.");
         localStorage.setItem("loggedInUser", username);
-        window.location.href = "Ca2.html";
+        window.location.href = "/chat-bot";
         updateUserprofile();
     } else {
         alert("Invalid credentials! Redirecting to login error page.");
-        window.location.href = "loginError.html";
+        window.location.href = "/loginerror";
     }
 });
 
@@ -73,7 +73,7 @@ document.querySelector(".container form")?.addEventListener("submit", (event) =>
     let otp = Math.floor(100000 + Math.random() * 900000);
     localStorage.setItem("otp", otp);
     alert(`An OTP has been sent to ${email}: ${otp} (Simulated for now)`);
-    window.location.href = "otp.html";
+    window.location.href = "/onetime";
 });
 
 
@@ -85,7 +85,7 @@ document.querySelector(".otp-container form")?.addEventListener("submit", (event
     if (enteredOtp === storedOtp) {
         alert("OTP Verified! Redirecting to chatbot.");
         localStorage.removeItem("otp");
-        window.location.href = "Ca2.html";
+        window.location.href = "/chat-bot";
         updateUserprofile();
     } else {
         alert("Invalid OTP! Please try again.");

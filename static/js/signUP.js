@@ -1,20 +1,3 @@
-   // Navigation buttons
-   document.getElementById("log-in-btn")?.addEventListener("click", () => {
-    window.location.href = "login.html";
-});
-document.querySelector("ul li")?.addEventListener("click", () => {
-    window.location.href = "signUP.html";
-});
-document.getElementById("chat-btn")?.addEventListener("click", () => {
-    window.location.href = "Ca2.html";
-});
-document.querySelector(".forgot-password")?.addEventListener("click", () => {
-    window.location.href = "forgotPass.html";
-});
-document.querySelector(".login-link")?.addEventListener("click", () => {
-    window.location.href = "login.html";
-});
-// Signup Functionality
 document.querySelector(".signup-container form")?.addEventListener("submit", (event) => {
     event.preventDefault();
     let fullname = document.getElementById("fullname").value;
@@ -33,7 +16,7 @@ document.querySelector(".signup-container form")?.addEventListener("submit", (ev
         users[username] = { fullname, email, password };
         localStorage.setItem("users", JSON.stringify(users));
         alert("Signup successful! Redirecting to login.");
-        window.location.href = "login.html";
+        window.location.href = "/login";
     }
 });
 // Login Functionality
@@ -45,10 +28,10 @@ document.querySelector(".login-container form")?.addEventListener("submit", (eve
     if (users[username] && users[username].password === password) {
         alert("Login successful! Redirecting to chatbot.");
         localStorage.setItem("loggedInUser", username);
-        window.location.href = "Ca2.html";
+        window.location.href = "/chat-bot";
     } else {
         alert("Invalid credentials! Redirecting to login error page.");
-        window.location.href = "loginError.html";
+        window.location.href = "/loginerror";
     }
 });
 // Forgot Password Functionality
@@ -58,7 +41,7 @@ document.querySelector(".container form")?.addEventListener("submit", (event) =>
     let otp = Math.floor(100000 + Math.random() * 900000);
     localStorage.setItem("otp", otp);
     alert(`An OTP has been sent to ${email}: ${otp} (Simulated for now)`);
-    window.location.href = "otp.html";
+    window.location.href = "/onetime";
 });
 // OTP Verification Functionality
 document.querySelector(".otp-container form")?.addEventListener("submit", (event) => {
@@ -68,7 +51,7 @@ document.querySelector(".otp-container form")?.addEventListener("submit", (event
     if (enteredOtp === storedOtp) {
         alert("OTP Verified! Redirecting to chatbot.");
         localStorage.removeItem("otp");
-        window.location.href = "Ca2.html";
+        window.location.href = "/chat-bot";
     } else {
         alert("Invalid OTP! Please try again.");
     }
