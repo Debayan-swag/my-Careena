@@ -172,6 +172,7 @@ function updateUserprofile() {
 }
 
 updateUserprofile();
+
 const createOrb = () => {
     const orb = document.createElement('div');
     orb.className = 'orb';
