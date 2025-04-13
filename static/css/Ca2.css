@@ -15,6 +15,7 @@
     color: #ff4444;
     font-weight: bold;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -162,7 +163,7 @@ h2 {
 .chatBot-img {
     height: 60px;
     width: 60px;
-    background-image: url('../images/chatbotphoto.png');
+    background-image: url('../images/newchatbot.png');
     background-size: cover;
     background-size: center;
     border-radius: 50%;
@@ -309,4 +310,25 @@ h2 {
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #1a9ba4;
+}
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%);
+    animation: floatUp 10s linear infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-10vh) scale(1.2);
+      opacity: 0;
+    }
 }

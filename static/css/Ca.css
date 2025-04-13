@@ -5,6 +5,7 @@
     box-sizing: border-box;
     transition: all 0.3s ease; /* Added smooth transition to all elements */
 }
+
 .container {
     min-height: 100vh;
     width: 100%;
@@ -295,4 +296,25 @@ ul li:hover {
 @keyframes breakEffect {
     0% { opacity: 1; }
     100% { opacity: 0; }
+}
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 80%);
+    animation: floatUp 10s linear infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-10vh) scale(1.2);
+      opacity: 0;
+    }
 }
